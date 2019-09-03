@@ -7,12 +7,12 @@ import ImmRepaymentTerms from './immrepaymentterms'
 const schoolInfo = {
     interestRate36: '8.99%',
     interestRate60: '10.99%',
-    APRRange36: '11.08 - 11.16%',
+    APRRange36: '11.08%',
     APRRange60: '12.48 - 12.51%',
     interestOnly: [{
         programName: '',
-        APR36: '11.16%',
-        financeCharge36: '$2,293.64',
+        APR36: '11.08%',
+        financeCharge36: '$2,371.56',
         IOPayment36: '$77.91',
         FullMonthlyPayment36: '$330.67',
         APR60: '12.51%',
@@ -22,7 +22,7 @@ const schoolInfo = {
         LoanExampleAmt: '$10,000',
         LoanExampleOFeeAmt: '$400',
         LoanExampleAmtPlusOFee: '$10,400',
-        programLength: '3' // program length in months
+        programLength: '4' // program length in months
     }],
     immediateRepayment: [{ // set values to empty strings if no IR option is available
         programName: 'PATH Program with/without the certification',
@@ -37,7 +37,7 @@ const schoolInfo = {
         LoanExampleAmtPlusOFee: '$10,400',
     }]
 }
-const multipleLoanLengths = true // true if both 36 and 60 month options are available
+const multipleLoanLengths = false // true if both 36 and 60 month options are available
 const multipleLoanTypes = false // true if both IR and IO are available
 
 const TermInfo = props => (

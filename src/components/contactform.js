@@ -13,7 +13,7 @@ class ContactForm extends React.Component {
         email: "",
         identity: "",
         name: "",
-        school: "Coding Dojo",
+        school: "Designation",
         other: "",
         otherDescription: "",
         thankyou: false,

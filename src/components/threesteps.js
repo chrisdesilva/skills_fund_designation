@@ -2,7 +2,6 @@ import React from 'react'
 import Button from './button'
 
 const costOfLiving = true // true if at least one program offers cost of living
-const schoolName = 'Coding Dojo'
 
 const ThreeSteps = React.forwardRef((props, ref) => {
     return (
@@ -20,14 +19,14 @@ const ThreeSteps = React.forwardRef((props, ref) => {
                 <div id="stepCard2" className="stepCards flex flex-col items-center m-2 lg:w-1/3 p-4 rounded shadow-2xl bg-white border-primary border-t-8">
                     <p className="rounded-full h-10 w-10 flex items-center justify-center border border-primary">2</p>
                     <h3 className="uppercase">select your program</h3>
-                    <p>Choose between the Onsite Bootcamp, Online Full-Time Bootcamp, and Online Part-Time Bootcamp programs.</p>
+                    <p>Designation focuses exclusively on its UX/UI Design program.</p>
                 </div>
                 {/* ^^^ Update this section as needed ^^^ */}
 
                 <div id="stepCard3" className="stepCards flex flex-col items-center m-2 lg:w-1/3 p-4 rounded shadow-2xl bg-white border-primary border-t-8">
                     <p className="rounded-full h-10 w-10 flex items-center justify-center border border-primary">3</p>
                     <h3 className="uppercase">apply for funding!</h3>
-                    <p className="m-0">You'll be on your way to an exciting career in tech as part of {schoolName}'s powerful network.</p>
+                    <p className="m-0">You'll be on your way to an exciting career in tech as part of {props.schoolName}'s powerful network.</p>
                     <Button
                         buttonClassName="opacityApply uppercase bg-primary p-3 rounded-full shadow-lg text-white w-40"
                         divClassName="flex justify-center mt-5"

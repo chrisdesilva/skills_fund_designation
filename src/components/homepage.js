@@ -105,6 +105,7 @@ class Homepage extends React.Component {
             <ThreeSteps
               onClick={this.scrollToApply2} 
               ref={this.threesteps}
+              schoolName={this.props.schoolName}
             />
             <LoanCalculator />
             <LoanApp 
@@ -128,7 +129,9 @@ class Homepage extends React.Component {
                 <TermInfo />
             </Collapse>
             <Collapse isOpened={this.state.faq} springConfig={{stiffness: 150, damping: 40}}>
-                <FAQ />
+                <FAQ 
+                  schoolName={this.props.schoolName}
+                />
             </Collapse>
             <Collapse isOpened={this.state.eligibility} springConfig={{stiffness: 150, damping: 40}}>
                 <Eligibility />

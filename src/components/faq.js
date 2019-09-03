@@ -2,22 +2,21 @@ import React, { useState } from 'react'
 import { FaAngleDown } from 'react-icons/fa'
 import { UnmountClosed as Collapse } from 'react-collapse'
 
-const schoolName = 'Coding Dojo'
 const costOfLiving = true // true if at least one program has cost of living included
 const interestOnly = true // true if interest-only payments are an option
 const immediateRepayment = false // true if immediate repayment is an option
-const multipleLoanLengths = true // true if 36 and 60 month options are both available
+const multipleLoanLengths = false // true if 36 and 60 month options are both available
 
 // interest payment FAQ info
 const interestRate36 = '8.99%'
 const interestRate60 = '10.99%'
-const APR36 = '11.08 - 11.16%'
+const APR36 = '11.08%'
 const APR60 = '12.48 - 12.51%'
 const IOPayment36 = '$77.91'
 const IOPayment60 = '$95.25'
 
 // update with school-specific info
-const FAQ = () => {
+const FAQ = props => {
 
      const [q1, showq1] = useState(false)
      const [q2, showq2] = useState(false)
@@ -37,13 +36,11 @@ const FAQ = () => {
           
           <div onClick={() => showq1(!q1)}><h3 className="text-lg text-lg uppercase text-primary flex items-center cursor-pointer"><span className="text-sm"><FaAngleDown /></span>How much can I borrow and for what specific uses?</h3></div>
           <Collapse isOpened={q1} springConfig={{stiffness: 150, damping: 30}}>
-               <p>The maximum amount you can borrow will depend on your program. You can finance your tuition, optional certification, and cost of living expenses.</p>
+               {/* <p>The maximum amount you can borrow will depend on your program. You can finance your tuition, optional certification, and cost of living expenses.</p> */}
                <ul>
-                    <li><strong>For Coding Dojo's Onsite Bootcamp,</strong> you may borrow from $2,000 up to the max loan amount for tuition & cost of living for your metro.</li>
-                    <li><strong>For Coding Dojo's Online Full-Time Bootcamp,</strong> you may borrow from $2,000 to $14,995 for tuition.</li>
-                    <li><strong>For Coding Dojo's Online Part-Time Bootcamp,</strong> you may borrow from $2,000 to $9,995 for tuition.</li>
+                    <li><strong>For Designation's UX/UI Design program,</strong> you may borrow from $2,000 up to $15,800 for tuition. You may also borrow up to $4,500 for cost of living.</li>
                </ul>
-               <p className="mb-0 pb-4"><strong>Please note:</strong> In order to finance cost of living, borrow at least $2,000 in tuition financing. You will pay your cash deposit directly to <strong>{schoolName}</strong>.</p>
+               <p className="mb-0 pb-4"><strong>Please note:</strong> In order to finance cost of living, borrow at least $2,000 in tuition financing. You will pay your cash deposit directly to <strong>{props.schoolName}</strong>.</p>
           </Collapse>
           
           {costOfLiving &&
@@ -51,7 +48,7 @@ const FAQ = () => {
                <div onClick={() => showq2(!q2)}><h3 className="text-lg uppercase text-primary flex items-center cursor-pointer"><span className="text-sm"><FaAngleDown /></span>when will i receive my living stipend?</h3></div>
                <Collapse isOpened={q2} springConfig={{stiffness: 150, damping: 30}}>
                          {/* INCLUDE FIRST <p> IF ONLY CERTAIN PROGRAMS OFFER COST OF LIVING */}
-                         <p><strong>Only the Onsite Bootcamp is eligible for cost of living.</strong></p>
+                         {/* <p><strong>Only the Onsite Bootcamp is eligible for cost of living.</strong></p> */}
                          <p>Your lump sum living stipend will be sent to you on the second Wednesday after your program start. You can elect to have your cost of living disbursed via electronic funds transfer or mailed directly to the address provided in their loan application.</p>
                          <p className="mb-0 pb-4">Please allow 1 - 5 business days for your electronic funds transfer to be reflected in your bank account. For all students who elect to have funds mailed to their address, please allow 5 - 10 business days for your check to arrive via U.S. Standard Mail.</p>
                </Collapse>

@@ -1,13 +1,13 @@
 import PropTypes from "prop-types"
 import React from "react"
-import schoolLogo from "../images/codingdojo_logo.png" // add school logo to images folder and import here
+import schoolLogo from "../images/designation_logo.png" // add school logo to images folder and import here
 import skillsFund from "../images/skillsFund_logo.png"
 
 // update school-specific info
 
 const schoolInfo = {
-  schoolName: 'Coding Dojo',
-  schoolUrl: 'https://www.codingdojo.com/' // update with url of school's website
+  schoolName: 'Designation',
+  schoolUrl: 'https://designation.io/' // update with url of school's website
 }
 
 const Header = ({ siteTitle }) => (
@@ -23,7 +23,7 @@ const Header = ({ siteTitle }) => (
             <img
               src={schoolLogo} 
               alt={schoolInfo.schoolName}
-              className="h-8"
+              className="h-16"
               loading="lazy"
               id="schoolLogo"
             />

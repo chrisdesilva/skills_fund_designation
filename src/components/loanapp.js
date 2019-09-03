@@ -11,18 +11,13 @@ const LoanApp = React.forwardRef((props, ref) => {
     const [submitted, isSubmitted] = useState(false)
     const [disclaimers, toggleDisclaimers] = useState(false)
     const [programInfo, setProgramInfo] = useState({
-        programName: 'Onsite Bootcamp',
-        active: { 
-            program1: false,
-            program2: false,
-            program3: false
-        }
+        programName: 'UI/UX Design',
     })
-    const [loanUrl, setLoanUrl] = useState(`https://sf.privateloan.studentloan.org/external/LoanApplication.do?lenderCode=SKCD17`) // if multiple programs, set lenderCode to first program option
-    const formID = 'c722ff33-00c5-4a56-8849-c4982db81f44' // get form id for apply now
+    const [loanUrl, setLoanUrl] = useState(`https://sf.privateloan.studentloan.org/external/LoanApplication.do?lenderCode=SFD17`) // if multiple programs, set lenderCode to first program option
+    const formID = '98a9a0d2-8aa6-4f15-90d1-d8e21e54d8cf' // get form id for apply now
     const costOfLiving = true // set to false of cost of living is not available
-    const multiplePrograms = true // set to false if there is only one program
-    const onlinePrograms = true // set to true if there is at least one online/remote program offered
+    const multiplePrograms = false // set to false if there is only one program
+    const onlinePrograms = false // set to true if there is at least one online/remote program offered
     const schoolHQState = 'WA' // two letter abbreviation for school headquarters state
 
     const activeClass = "cursor-pointer border-2 rounded border-black text-center py-2 text-white bg-primary mb-2" // highlights selected option in loan app form
@@ -37,47 +32,25 @@ const LoanApp = React.forwardRef((props, ref) => {
         switch(programNumber) {
             case 1: // info should match default
                 setProgramInfo({
-                    programName: 'Onsite Bootcamp', 
+                    programName: 'UI/UX Design', 
                     active: {
                         program1: !programInfo.active.program1, 
                         program2: false, 
                         program3: false
                     }
                 })
-                setLoanUrl(`https://sf.privateloan.studentloan.org/external/LoanApplication.do?lenderCode=SKCD17`) // update lenderCode with market segment code from LP
-                break;
-            case 2:
-                setProgramInfo({
-                    programName: 'Online Full-Time Bootcamp', 
-                    active: {
-                        program1: false, 
-                        program2: !programInfo.active.program2, 
-                        program3: false
-                    }
-                })
-                setLoanUrl(`https://sf.privateloan.studentloan.org/external/LoanApplication.do?lenderCode=SKDOJOO19`) // update lenderCode with market segment code from LP
-                break;
-            case 3:
-                setProgramInfo({
-                    programName: 'Online Part-Time Bootcamp', 
-                    active: {
-                        program1: false, 
-                        program2: false, 
-                        program3: !programInfo.active.program3
-                    }
-                })
-                setLoanUrl(`https://sf.privateloan.studentloan.org/external/LoanApplication.do?lenderCode=SKDOJON18`) // update lenderCode with market segment code from LP
+                setLoanUrl(`https://sf.privateloan.studentloan.org/external/LoanApplication.do?lenderCode=SFD17`) // update lenderCode with market segment code from LP
                 break;
             default: // info should match case 1
                 setProgramInfo({ 
-                    programName: 'Onsite Bootcamp', 
+                    programName: 'UI/UX Design', 
                     active: {
                         program1: !programInfo.active.program1, 
                         program2: false, 
                         program3: false
                     }
                 })
-                setLoanUrl(`https://sf.privateloan.studentloan.org/external/LoanApplication.do?lenderCode=SKCD17`)
+                setLoanUrl(`https://sf.privateloan.studentloan.org/external/LoanApplication.do?lenderCode=SFD17`)
                 break;
         }
     }
@@ -125,7 +98,7 @@ const LoanApp = React.forwardRef((props, ref) => {
             "value": "Student"
             },
             {
-            "name": "select_a_codingdojo_program", // update school name to match form field on Hubspot
+            "name": "program_name", // update school name to match form field on Hubspot
             "value": `${programInfo.programName}`
             },
             {
@@ -175,7 +148,7 @@ const LoanApp = React.forwardRef((props, ref) => {
                     <img className="w-auto" src={marching} alt="People marching and carrying flags" loading="lazy"/>
                 </div>
             {/* update form fields as necessary */}
-            <form className="codingdojo_apply_now program-apply flex flex-col items-center" onSubmit={handleSubmit}>
+            <form className="designation_apply_now program-apply flex flex-col items-center" onSubmit={handleSubmit}>
                 <label htmlFor="email">Email address</label>
                 <input className="border-2 rounded border-primary text-center py-2 mb-4 w-64" type="email" name="email" placeholder="Enter your email address" onChange={handleChange} value={email} required />
                 {multiplePrograms && 
@@ -183,7 +156,7 @@ const LoanApp = React.forwardRef((props, ref) => {
                         <p className="text-center text-sm">Select a {props.schoolName} program</p>
                         
                         {/* WHEN ADDING AND REMOVING PROGRAMS, PAY ATTENTION TO THE NUMBER AT THE END OF programInfo.active and handleProgramSelect */}
-                        <p className={programInfo.active.program1 ? activeClass : inactiveClass} onClick={() => handleProgramSelect(1)}>Onsite Bootcamp</p>
+                        <p className={programInfo.active.program1 ? activeClass : inactiveClass} onClick={() => handleProgramSelect(1)}>UI/UX Design</p>
                         <p className={programInfo.active.program2 ? activeClass : inactiveClass} onClick={() => handleProgramSelect(2)}>Online Full-Time Bootcamp</p>
                         <p className={programInfo.active.program3 ? activeClass : inactiveClass} onClick={() => handleProgramSelect(3)}>Online Part-Time Bootcamp</p>
                     </div>

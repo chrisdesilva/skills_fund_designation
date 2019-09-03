@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import LoanCalcPaymentTable from './loancalcpaymenttable'
+// import LoanCalcPaymentTable from './loancalcpaymenttable'
 import { UnmountClosed as Collapse } from 'react-collapse'
 
 const LoanCalculator = () => {
@@ -12,19 +12,18 @@ const LoanCalculator = () => {
     const interestRate36 = 8.99
     const interestRate60 = 10.99
     const origFee = 0.04
-    const multiPrograms = true // only true if there are multiple programs
-    const [multiMetros, showMetros] = useState(true) // true if there are multiple metros that have DIFFERENT max loan amounts for the SAME PROGRAM
+    const multiPrograms = false // only true if there are multiple programs
+    const [multiMetros, showMetros] = useState(false) // true if there are multiple metros that have DIFFERENT max loan amounts for the SAME PROGRAM
     const [interestPayment, setInterestPayment] = useState({ payment36: null, payment60: null })
     const [monthlyPayment, setMonthlyPayment] = useState({ payment36: null, payment60: null })
     const [loanType, setLoanType] = useState('0') // default to 0 for interest-only, 1 for immediate repayment
     const [loanInformation, setLoanInformation] = useState({ 
-        maxLoanAmt: 19495,
+        maxLoanAmt: 20300,
         loanTerm36: true, // only true if 36 month option is available
-        loanTerm60: true, // only true if 60 month option is available
-        k: 5, // (program length in weeks / 4) + 2 -- round program length down to nearest number divisible by 4 (ie. 27 week program rounds down to 24, 24 / 4 + 6 = 12, k = 12)
+        loanTerm60: false, // only true if 60 month option is available
+        k: 6, // (program length in weeks / 4) + 2 -- round program length down to nearest number divisible by 4 (ie. 27 week program rounds down to 24, 24 / 4 + 6 = 12, k = 12)
         '0': { // interest-only
-            apr36: 11.16, 
-            apr60: 12.51
+            apr36: 11.08
         },
         '1': null
     })
@@ -34,8 +33,8 @@ const LoanCalculator = () => {
     }
 
     const calculateMonthlyPayment = () => {
-        const monthlyRate36 = (8.99 / 100) / 12
-        const monthlyRate60 = (10.99 / 100) / 12
+        const monthlyRate36 = (interestRate36 / 100) / 12
+        const monthlyRate60 = (interestRate60/ 100) / 12
         const borrowedAmount = loanAmount || defaultLoanAmount
         const totalLoan = borrowedAmount * (1 + origFee)
         let pv = totalLoan
@@ -270,8 +269,8 @@ const LoanCalculator = () => {
                 <h3 className="text-center">Calculate Your Monthly Payments</h3>
 
                 {/* UPDATE LOAN AMOUNTS AND COST OF LIVING BY PROGRAM BELOW */}
-                <p className="text-center">Choose the loan amount that works best for you. Borrow up to your metro's max (see table below) for the Onsite Bootcamp, up to $14,995 for the Online Full-Time Bootcamp tuition, and up to $9,995 for the Online Part-Time Bootcamp tuition.</p>
-                <LoanCalcPaymentTable />
+                <p className="text-center">Choose the loan amount that works best for you. Borrow up to $15,800 for Designation's UI/UX Design program and up to $4,500 for cost of living.</p>
+                {/* <LoanCalcPaymentTable /> */}
 
                 <div className="flex flex-col justify-center w-full md:w-1/3">
                 

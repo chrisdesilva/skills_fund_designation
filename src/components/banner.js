@@ -5,7 +5,7 @@ const Banner = props => {
     return (
     <div className='flex flex-col justify-center items-center relative z-0' id='banner'>
         {/* update h2 with school-specific content */}
-        <h1 className='text-3xl lg:text-4xl font-normal text-center mt-8 text-black px-4'>Learn to Code at Coding Dojo</h1>
+        <h1 className='text-3xl lg:text-4xl font-normal text-center mt-8 text-black px-4'>Learn UI/UX Design at Designation</h1>
         <h2 className='text-base lg:text-xl font-light text-center text-black'>Know exactly what you'll pay with Skills Fund</h2>
         <div className='flex flex-col lg:flex-row pb-16'>
             <Button
