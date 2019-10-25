@@ -59,13 +59,13 @@ const LoanApp = React.forwardRef((props, ref) => {
         window.open(loanUrl, "_blank", "noopener noreferrer")
     };
 
-    const trackGoogleAnalyticsEvent = () => {
-            ReactGA.event({
-                category: 'Apply Now Button | Designation',
-                action: 'click',
-                label: 'submitted loan application'
-            })
-    }
+    // const trackGoogleAnalyticsEvent = () => {
+    //         ReactGA.event({
+    //             category: 'Apply Now Button | Designation',
+    //             action: 'click',
+    //             label: 'submitted loan application'
+    //         })
+    // }
 
     const trackFacebookPixel = () => {
         ReactPixel.track('InitiateCheckout', {
@@ -132,7 +132,7 @@ const LoanApp = React.forwardRef((props, ref) => {
         .then(response => console.log('success', response))
         .catch(error => console.log('error: ', error))
         
-        trackGoogleAnalyticsEvent()
+        // trackGoogleAnalyticsEvent()
         trackFacebookPixel()
         redirectLoanApp()
         isSubmitted(true)
