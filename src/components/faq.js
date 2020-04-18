@@ -1,23 +1,10 @@
 import React, { useState } from "react"
 import { FaAngleDown } from "react-icons/fa"
 import { UnmountClosed as Collapse } from "react-collapse"
-
-const costOfLiving = true // true if at least one program has cost of living included
-const interestOnly = true // true if interest-only payments are an option
-const immediateRepayment = false // true if immediate repayment is an option
-const multipleLoanLengths = false // true if 36 and 60 month options are both available
-const multipleLoanTypes = false // true if 36 and 60 month options are both available
-
-// interest payment FAQ info
-const interestRate36 = "8.99%"
-const interestRate60 = "10.99%"
-const APR36 = "11.08%"
-const APR60 = "12.48 - 12.51%"
-const IOPayment36 = "$77.91"
-const IOPayment60 = "$95.25"
+import { faq, schoolName } from "../constants/programInfo"
 
 // update with school-specific info
-const FAQ = props => {
+const FAQ = () => {
   const [q1, showq1] = useState(false)
   const [q2, showq2] = useState(false)
   const [q3, showq3] = useState(false)
@@ -44,19 +31,40 @@ const FAQ = props => {
         </h3>
       </div>
       <Collapse isOpened={q1} springConfig={{ stiffness: 150, damping: 30 }}>
-        {/* <p>The maximum amount you can borrow will depend on your program. You can finance your tuition, optional certification, and cost of living expenses.</p> */}
-        <ul>
-          <li>
-            <strong>For Designation's UX/UI Design program,</strong> you may
-            borrow from $2,000 up to $15,800 for tuition. You may also borrow up
-            to $4,500 for cost of living.
-          </li>
-        </ul>
-        <p className="mb-0 pb-4">
-          <strong>Please note:</strong> In order to finance cost of living,
-          borrow at least $2,000 in tuition financing. You will pay your cash
-          deposit directly to <strong>{props.schoolName}</strong>.
+        <p>
+          The maximum amount you can borrow will depend on your program.
+          {faq.costOfLiving && (
+            <span>
+              {" "}
+              You can finance your tuition and cost of living expenses.
+            </span>
+          )}
         </p>
+        <ul className="mb-0 pb-4">
+          {faq.loanRange.map(program => {
+            return (
+              <li>
+                <strong>For {program.programName},</strong> you may borrow from
+                $2,000 up to {program.maxAmount} for tuition.{" "}
+                {program.col ? (
+                  <span>
+                    You may also borrow up to {program.colAmount} for cost of
+                    living.
+                  </span>
+                ) : (
+                  <span>Cost of living is not available for this program.</span>
+                )}
+              </li>
+            )
+          })}
+        </ul>
+        {faq.costOfLiving && (
+          <p className="mb-0 pb-4">
+            <strong>Please note:</strong> In order to finance cost of living,
+            borrow at least $2,000 in tuition financing. You will pay your cash
+            deposit directly to <strong>{schoolName}</strong>.
+          </p>
+        )}
       </Collapse>
 
       <div onClick={() => showq2(!q2)}>
@@ -96,7 +104,7 @@ const FAQ = props => {
         </p>
       </Collapse>
 
-      {costOfLiving && (
+      {faq.costOfLiving && (
         <>
           <div onClick={() => showq3(!q3)}>
             <h3 className="text-lg uppercase text-primary flex items-center cursor-pointer">
@@ -110,8 +118,20 @@ const FAQ = props => {
             isOpened={q3}
             springConfig={{ stiffness: 150, damping: 30 }}
           >
-            {/* INCLUDE FIRST <p> IF ONLY CERTAIN PROGRAMS OFFER COST OF LIVING */}
-            {/* <p><strong>Only the Onsite Bootcamp is eligible for cost of living.</strong></p> */}
+            {faq.costOfLivingPrograms && (
+              <p>
+                <strong>
+                  Only the {faq.costOfLivingPrograms}{" "}
+                  {faq.multCostOfLivingPrograms ? (
+                    <span>are</span>
+                  ) : (
+                    <span>is</span>
+                  )}{" "}
+                  eligible for cost of living.
+                </strong>
+              </p>
+            )}
+
             <p>
               Your lump sum living stipend will be sent to you on the second
               Wednesday after your program start. You can elect to have your
@@ -150,7 +170,7 @@ const FAQ = props => {
           monthly payment, or you can make larger payments. You have the
           flexibility to pay off your loan anytime before your loan term ends!
         </p>
-        {multipleLoanTypes && (
+        {faq.multipleLoanTypes && (
           <>
             <p>
               Skills Fund offers two repayment options. Check out the loan
@@ -162,7 +182,7 @@ const FAQ = props => {
                 <strong>Interest-only</strong> loans allow you to hold on to
                 more of your savings during your training. You’ll start making
                 low, interest-only payments about one month after your program
-                starts and continue those payments for two months after the
+                starts and continue those payments for three months after the
                 program ends. After this interest-only period, you’ll start
                 making full payments (interest + principal).
               </li>
@@ -174,13 +194,13 @@ const FAQ = props => {
             </ul>
           </>
         )}
-        {!multipleLoanTypes && interestOnly && (
+        {!faq.multipleLoanTypes && faq.interestOnly && (
           <p>
             Skills Fund’s interest-only loans allow you to hold on to more of
             your savings during your training. You’ll start making low,
             interest-only payments about one month after your program starts and
-            continue those payments for two months after the program ends. After
-            this interest-only period, you’ll start making full payments
+            continue those payments for three months after the program ends.
+            After this interest-only period, you’ll start making full payments
             (interest + principal).
           </p>
         )}
@@ -236,20 +256,20 @@ const FAQ = props => {
       <Collapse isOpened={q5} springConfig={{ stiffness: 150, damping: 30 }}>
         <p className="mb-0 pb-4">
           The deferment period is defined as the time you are attending the
-          course, plus an additional two months after program completion. These
-          additional two months are considered your grace period.
+          course, plus an additional three months after program completion.
+          These additional three months are considered your grace period.
         </p>
-        {interestOnly && (
+        {faq.interestOnly && (
           <p className="mb-0 pb-4">
             <strong>Interest-Only Loans: </strong>Interest-only payments are
             required during the deferment period. After the deferment period
             ends, payments of interest and principal are required. Paying
             interest on your loan during the deferment period will result in
             lower interest + principal payments during the full loan repayment
-            phase of 36{multipleLoanLengths && <span> or 60</span>} months.
+            phase of 36{faq.multipleLoanLengths && <span> or 60</span>} months.
           </p>
         )}
-        {immediateRepayment && (
+        {faq.immediateRepayment && (
           <p className="mb-0 pb-4">
             <strong>Immediate Repayment Loans: </strong>These loans have no
             deferment period. You will start making full monthly payments
@@ -275,14 +295,14 @@ const FAQ = props => {
         </p>
         <p>
           <strong>For a 36-month $10,000 loan:</strong> The interest rate is
-          fixed at {interestRate36} / {APR36} estimated APR. The interest-only
-          monthly payment is approximately {IOPayment36}.
+          fixed at {faq.interestRate36} / {faq.APR36} estimated APR. The
+          interest-only monthly payment is approximately {faq.IOPayment36}.
         </p>
-        {multipleLoanLengths && (
+        {faq.multipleLoanLengths && (
           <p>
             <strong>For a 60-month $10,000 loan:</strong> The interest rate is
-            fixed at {interestRate60} / {APR60} estimated APR. The interest-only
-            monthly payment is approximately {IOPayment60}.
+            fixed at {faq.interestRate60} / {faq.APR60} estimated APR. The
+            interest-only monthly payment is approximately {faq.IOPayment60}.
           </p>
         )}
         <p>Please see terms in "Term Details" above.</p>
@@ -312,7 +332,7 @@ const FAQ = props => {
       </div>
       <Collapse isOpened={q7} springConfig={{ stiffness: 150, damping: 30 }}>
         <p>
-          You will be charged an origination fee of 4.0%. This amount will be
+          You will be charged an origination fee of 5.0%. This amount will be
           added to the amount of tuition you borrow and is included in the total
           loan principal amount you finance. This fee helps cover the
           administrative fees associated with originating the loan and is
