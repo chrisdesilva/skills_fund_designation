@@ -128,7 +128,7 @@ class Homepage extends React.Component {
         {/* <LeadContent schoolName={this.props.schoolName} />
 				<ThreeSteps onClick={this.scrollToApply2} ref={this.threesteps} schoolName={this.props.schoolName} />
 				<LoanCalculator /> */}
-        <SlidingLoanCalculator location={this.props.location} />
+        {/* <SlidingLoanCalculator location={this.props.location} />
         {applicationsLive ? (
           <LoanApp
             ref={this.apply}
@@ -151,31 +151,31 @@ class Homepage extends React.Component {
           pageUri={this.props.pageUri}
           schoolName={this.props.schoolName}
           trackGA={this.trackStatic}
-        />
+        /> */}
         <InfoButtonContainer
           terms={this.activateMoreInfo}
           faq={this.activateFAQ}
           eligibility={this.activateEligibility}
           contact={this.activateContact}
         />
-        <Collapse
+        {/* <Collapse
           isOpened={this.state.termInfo}
           springConfig={{ stiffness: 150, damping: 40 }}
         >
           <TermInfo />
-        </Collapse>
+        </Collapse> */}
         <Collapse
           isOpened={this.state.faq}
           springConfig={{ stiffness: 150, damping: 40 }}
         >
           <FAQ schoolName={this.props.schoolName} />
         </Collapse>
-        <Collapse
+        {/* <Collapse
           isOpened={this.state.eligibility}
           springConfig={{ stiffness: 150, damping: 40 }}
         >
           <Eligibility />
-        </Collapse>
+        </Collapse> */}
         <Collapse
           isOpened={this.state.contact}
           springConfig={{ stiffness: 150, damping: 40 }}
@@ -183,7 +183,7 @@ class Homepage extends React.Component {
           <ContactForm formName={this.props.formName} />
         </Collapse>
         <CookieBanner />
-        <ApplyFooter onClick={this.scrollToApply3} />
+        {/* <ApplyFooter onClick={this.scrollToApply3} /> */}
       </Layout>
     )
   }

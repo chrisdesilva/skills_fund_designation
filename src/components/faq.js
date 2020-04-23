@@ -22,7 +22,7 @@ const FAQ = () => {
     <div className="mx-2 lg:mx-10 p-8 shadow rounded">
       <h2 className="py-4 text-center">Frequently Asked Questions</h2>
 
-      <div onClick={() => showq1(!q1)}>
+      {/* <div onClick={() => showq1(!q1)}>
         <h3 className="text-lg text-lg uppercase text-primary flex items-center cursor-pointer">
           <span className="text-sm">
             <FaAngleDown />
@@ -49,7 +49,8 @@ const FAQ = () => {
                 {program.col ? (
                   <span>
                     You may also borrow up to {program.colAmount} for cost of
-                    living.
+                    living. See table above the loan calculator for a breakdown
+                    by location.
                   </span>
                 ) : (
                   <span>Cost of living is not available for this program.</span>
@@ -65,7 +66,7 @@ const FAQ = () => {
             deposit directly to <strong>{schoolName}</strong>.
           </p>
         )}
-      </Collapse>
+      </Collapse> */}
 
       <div onClick={() => showq2(!q2)}>
         <h3 className="text-lg text-lg uppercase text-primary flex items-center cursor-pointer">
@@ -104,7 +105,7 @@ const FAQ = () => {
         </p>
       </Collapse>
 
-      {faq.costOfLiving && (
+      {/* {faq.costOfLiving && (
         <>
           <div onClick={() => showq3(!q3)}>
             <h3 className="text-lg uppercase text-primary flex items-center cursor-pointer">
@@ -146,7 +147,7 @@ const FAQ = () => {
             </p>
           </Collapse>
         </>
-      )}
+      )} */}
 
       <div onClick={() => showq4(!q4)}>
         <h3 className="text-lg uppercase text-primary flex items-center cursor-pointer">
@@ -182,7 +183,7 @@ const FAQ = () => {
                 <strong>Interest-only</strong> loans allow you to hold on to
                 more of your savings during your training. You’ll start making
                 low, interest-only payments about one month after your program
-                starts and continue those payments for three months after the
+                starts and continue those payments for two months after the
                 program ends. After this interest-only period, you’ll start
                 making full payments (interest + principal).
               </li>
@@ -199,8 +200,8 @@ const FAQ = () => {
             Skills Fund’s interest-only loans allow you to hold on to more of
             your savings during your training. You’ll start making low,
             interest-only payments about one month after your program starts and
-            continue those payments for three months after the program ends.
-            After this interest-only period, you’ll start making full payments
+            continue those payments for two months after the program ends. After
+            this interest-only period, you’ll start making full payments
             (interest + principal).
           </p>
         )}
@@ -256,8 +257,8 @@ const FAQ = () => {
       <Collapse isOpened={q5} springConfig={{ stiffness: 150, damping: 30 }}>
         <p className="mb-0 pb-4">
           The deferment period is defined as the time you are attending the
-          course, plus an additional three months after program completion.
-          These additional three months are considered your grace period.
+          course, plus an additional two months after program completion. These
+          additional two months are considered your grace period.
         </p>
         {faq.interestOnly && (
           <p className="mb-0 pb-4">
@@ -332,7 +333,7 @@ const FAQ = () => {
       </div>
       <Collapse isOpened={q7} springConfig={{ stiffness: 150, damping: 30 }}>
         <p>
-          You will be charged an origination fee of 5.0%. This amount will be
+          You will be charged an origination fee of 4.0%. This amount will be
           added to the amount of tuition you borrow and is included in the total
           loan principal amount you finance. This fee helps cover the
           administrative fees associated with originating the loan and is
@@ -353,7 +354,7 @@ const FAQ = () => {
         </p>
       </Collapse>
 
-      <div onClick={() => showq8(!q8)}>
+      {/* <div onClick={() => showq8(!q8)}>
         <h3 className="text-lg uppercase text-primary flex items-center cursor-pointer">
           <span className="text-sm">
             <FaAngleDown />
@@ -386,9 +387,9 @@ const FAQ = () => {
           additional funds, should you not be awarded your scholarship, as loans
           may not be upward adjusted.
         </p>
-      </Collapse>
+      </Collapse> */}
 
-      <div onClick={() => showq9(!q9)}>
+      {/* <div onClick={() => showq9(!q9)}>
         <h3 className="text-lg uppercase text-primary flex items-center cursor-pointer">
           <span className="text-sm">
             <FaAngleDown />
@@ -429,9 +430,9 @@ const FAQ = () => {
             finding the right cosigner.
           </a>
         </p>
-      </Collapse>
+      </Collapse> */}
 
-      <div onClick={() => showq10(!q10)}>
+      {/* <div onClick={() => showq10(!q10)}>
         <h3 className="text-lg uppercase text-primary flex items-center cursor-pointer">
           <span className="text-sm">
             <FaAngleDown />
@@ -445,9 +446,9 @@ const FAQ = () => {
           cohort must begin within 90 days of the date that you apply for a
           loan.
         </p>
-      </Collapse>
+      </Collapse> */}
 
-      <div onClick={() => showq11(!q11)}>
+      {/* <div onClick={() => showq11(!q11)}>
         <h3 className="text-lg uppercase text-primary flex items-center cursor-pointer">
           <span className="text-sm">
             <FaAngleDown />
@@ -474,9 +475,9 @@ const FAQ = () => {
           <li>Current income (not a factor in credit decision)</li>
           <li>Current employment status (not a factor in credit decision)</li>
         </ul>
-      </Collapse>
+      </Collapse> */}
 
-      <div onClick={() => showq12(!q12)}>
+      {/* <div onClick={() => showq12(!q12)}>
         <h3 className="text-lg uppercase text-primary flex items-center cursor-pointer">
           <span className="text-sm">
             <FaAngleDown />
@@ -499,7 +500,7 @@ const FAQ = () => {
           </a>{" "}
           today.
         </p>
-      </Collapse>
+      </Collapse> */}
 
       <p className="text-left lg:text-center">
         For other general questions about Skills Fund financing, please visit
